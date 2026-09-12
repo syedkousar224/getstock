@@ -1,0 +1,16 @@
+{
+  "name": "getstock",
+  "version": "1.0.0",
+  "description": "Getstock — a public video/image sharing platform. Anyone can browse and watch; login is required only to upload, like, or comment.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "multer": "^1.4.5-lts.1",
+    "uuid": "^9.0.1"
+  }
+}

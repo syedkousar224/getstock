@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Upload — Getstock</title>
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-left">
+      <button id="menuToggle" class="icon-btn" aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      </button>
+      <a href="/index.html" class="logo">
+        <span class="logo-mark">G</span>
+        <span class="logo-word">Getstock</span>
+      </a>
+    </div>
+    <div class="header-search"></div>
+    <div class="header-right">
+      <div id="authArea" class="auth-area"></div>
+    </div>
+  </header>
+
+  <aside id="sidebar" class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="/index.html" class="sidebar-link">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 3l9 8h-3v9h-5v-6H11v6H6v-9H3z"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="/index.html?kind=video" class="sidebar-link">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11z"/></svg>
+        <span>Videos</span>
+      </a>
+      <a href="/index.html?kind=image" class="sidebar-link">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m0 2v14h14V5zm2.5 3a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3M6 17l4-5 2.5 3L15 12l3 5z"/></svg>
+        <span>Images</span>
+      </a>
+      <div class="sidebar-divider"></div>
+      <a href="/upload.html" class="sidebar-link is-active">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M14 13h-4v-4H8l4-4 4 4h-2zM4 19h16v-2H4z"/></svg>
+        <span>Upload</span>
+      </a>
+    </nav>
+  </aside>
+
+  <main id="mainContent" class="main-content">
+    <div class="upload-page">
+
+      <!-- shown only if the visitor isn't logged in -->
+      <div id="signedOutNotice" class="signed-out-notice" hidden>
+        <h1>Sign in to upload</h1>
+        <p class="muted">You need an account to publish images or videos on Getstock.</p>
+        <a href="/login.html" class="btn btn-primary">Sign in</a>
+        <a href="/register.html" class="btn btn-ghost">Create account</a>
+      </div>
+
+      <!-- shown only if logged in -->
+      <form id="uploadForm" class="upload-form" hidden>
+        <h1 class="upload-heading">Upload to Getstock</h1>
+
+        <label id="dropzone" class="dropzone">
+          <input type="file" id="fileInput" accept="image/*,video/*" required hidden />
+          <svg class="dropzone-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 6v24M24 6l-9 9M24 6l9 9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 32v6a4 4 0 0 0 4 4h24a4 4 0 0 0 4-4v-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span id="dropzoneLabel" class="dropzone-label">Drop an image or video here, or click to browse</span>
+        </label>
+
+        <label class="field">
+          <span>Title</span>
+          <input type="text" id="titleInput" maxlength="150" placeholder="Give it a title" />
+        </label>
+
+        <label class="field">
+          <span>Description <span class="muted">(optional)</span></span>
+          <textarea id="descriptionInput" rows="4" maxlength="2000" placeholder="Tell viewers about it"></textarea>
+        </label>
+
+        <div id="uploadProgressWrap" class="upload-progress-wrap" hidden>
+          <div class="progress-track"><div id="uploadProgressFill" class="progress-fill"></div></div>
+          <span id="uploadProgressLabel" class="muted"></span>
+        </div>
+
+        <p class="form-error" id="uploadError" hidden></p>
+
+        <button type="submit" id="uploadSubmitBtn" class="btn btn-primary">Publish</button>
+      </form>
+    </div>
+  </main>
+
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/upload.js"></script>
+</body>
+</html>
